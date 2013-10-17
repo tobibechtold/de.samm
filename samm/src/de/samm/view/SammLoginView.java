@@ -43,7 +43,7 @@ public class SammLoginView extends JFrame {
 		
 		JButton btnRegistrieren = new JButton("Registrieren");
 		
-		JButton btnLogin = new JButton("Login");
+		JButton btnLogin = new JButton("Einloggen");
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
 		
