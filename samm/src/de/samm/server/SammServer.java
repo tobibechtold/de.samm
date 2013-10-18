@@ -2,8 +2,10 @@ package de.samm.server;
 
 public class SammServer {
 	
-	public static void start(String[] args) {
-		System.out.println("main method started");
+	private static final String apiKey = "0717C50D3B6B66E5";
+
+	public static String getApikey() {
+		return apiKey;
 	}
 
 }
