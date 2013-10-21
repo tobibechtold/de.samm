@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import de.samm.controller.SerienSerializer;
 import de.samm.controller.XMLParser;
 import de.samm.model.Serie;
 
@@ -14,8 +15,10 @@ public class SammView {
 	private BufferedImage img;
 	
 	public SammView() {
-		XMLParser parser = new XMLParser();
-		Serie bb = parser.parseSerie("Breaking Bad");
+//		XMLParser parser = new XMLParser();
+//		Serie bb = parser.parseSerie("Breaking Bad");
+		SerienSerializer ss = new SerienSerializer();
+		Serie bb = ss.deserializeSerie("Breaking Bad.dat");
 		if(bb != null) {
 			System.out.println(bb.getTitel());
 			img = bb.getCover();

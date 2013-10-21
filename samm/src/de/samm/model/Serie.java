@@ -1,10 +1,15 @@
 package de.samm.model;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.List;
 
-public class Serie extends AbstractMedium {
+public class Serie extends AbstractMedium implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9007306221573471920L;
 	private List<Staffel> staffeln;
 	private String sender;
 	
@@ -15,13 +20,7 @@ public class Serie extends AbstractMedium {
 		this.sender = sender;
 	}
 	
-	public Serie(String titel, String regisseur, String schauspieler,
-			String wertung, String plot, String release, 
-			String genre, String sender) {
-		super(titel, regisseur, schauspieler, wertung, plot, release,  genre);
-		this.sender = sender;
-	}
-	
+
 	public void addStaffel(Staffel s) {
 		staffeln.add(s);
 	}

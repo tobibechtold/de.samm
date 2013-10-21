@@ -2,6 +2,7 @@ package de.samm.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
@@ -61,6 +62,8 @@ public class XMLParser
 			System.out.println(release);
 		
 			serie = new Serie(titel,regisseur,schausspieler,wertung,beschreibung,release,cover,genre,sender);
+			SerienSerializer ss = new SerienSerializer();
+			ss.serializeSerie(serie);
 			return serie;
 		} catch (JDOMException | IOException e)
 		{
