@@ -1,9 +1,13 @@
 package de.samm.model;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.Serializable;
 
-public abstract class AbstractMedium {
+public abstract class AbstractMedium implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2677183380954034840L;
 	private String titel;
 	private String regisseur;
 	private String schauspieler; 
