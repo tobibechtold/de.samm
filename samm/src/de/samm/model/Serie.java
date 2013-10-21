@@ -9,8 +9,8 @@ public class Serie extends AbstractMedium {
 	private List<Staffel> staffeln;
 	private String sender;
 	
-	public Serie(String titel, String regisseur, List<String> schauspieler,
-			double wertung, String plot, Calendar release, File cover,
+	public Serie(String titel, String regisseur, String schauspieler,
+			String wertung, String plot, String release, File cover,
 			String genre, String sender) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.sender = sender;

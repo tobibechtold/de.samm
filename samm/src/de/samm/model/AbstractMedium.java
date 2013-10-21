@@ -7,18 +7,18 @@ import java.util.List;
 public abstract class AbstractMedium {
 	private String titel;
 	private String regisseur;
-	private List<String> schauspieler; 
-	private double wertung;
+	private String schauspieler; 
+	private String wertung;
 	private String plot;
-	private Calendar release;
+	private String release;
 	private File cover;
 	private String genre;
 	
 	
 	
 	public AbstractMedium(String titel, String regisseur,
-			List<String> schauspieler, double wertung, String plot,
-			Calendar release, File cover, String genre) {
+			String schauspieler, String wertung, String plot,
+			String release, File cover, String genre) {
 		super();
 		this.titel = titel;
 		this.regisseur = regisseur;
@@ -42,16 +42,16 @@ public abstract class AbstractMedium {
 	public void setRegisseur(String regisseur) {
 		this.regisseur = regisseur;
 	}
-	public List<String> getSchauspieler() {
+	public String getSchauspieler() {
 		return schauspieler;
 	}
-	public void setSchauspieler(List<String> schauspieler) {
+	public void setSchauspieler(String schauspieler) {
 		this.schauspieler = schauspieler;
 	}
-	public double getWertung() {
+	public String getWertung() {
 		return wertung;
 	}
-	public void setWertung(double wertung) {
+	public void setWertung(String wertung) {
 		this.wertung = wertung;
 	}
 	public String getPlot() {
@@ -60,10 +60,10 @@ public abstract class AbstractMedium {
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
-	public Calendar getRelease() {
+	public String getRelease() {
 		return release;
 	}
-	public void setRelease(Calendar release) {
+	public void setRelease(String release) {
 		this.release = release;
 	}
 	public File getCover() {
