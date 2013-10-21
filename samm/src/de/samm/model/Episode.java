@@ -1,8 +1,7 @@
 package de.samm.model;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Calendar;
-import java.util.List;
 
 public class Episode extends AbstractMedium{
 	/**
@@ -10,8 +9,8 @@ public class Episode extends AbstractMedium{
 	 */
 	private int nummer;
 
-	public Episode(String titel, String regisseur, List<String> schauspieler,
-			double wertung, String plot, Calendar release, File cover,
+	public Episode(String titel, String regisseur, String schauspieler,
+			String wertung, String plot, String release, BufferedImage cover,
 			String genre, int nummer) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.setNummer(nummer);

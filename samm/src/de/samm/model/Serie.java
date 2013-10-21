@@ -1,7 +1,6 @@
 package de.samm.model;
 
-import java.io.File;
-import java.util.Calendar;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class Serie extends AbstractMedium {
@@ -10,9 +9,16 @@ public class Serie extends AbstractMedium {
 	private String sender;
 	
 	public Serie(String titel, String regisseur, String schauspieler,
-			String wertung, String plot, String release, File cover,
+			String wertung, String plot, String release, BufferedImage cover,
 			String genre, String sender) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
+		this.sender = sender;
+	}
+	
+	public Serie(String titel, String regisseur, String schauspieler,
+			String wertung, String plot, String release, 
+			String genre, String sender) {
+		super(titel, regisseur, schauspieler, wertung, plot, release,  genre);
 		this.sender = sender;
 	}
 	

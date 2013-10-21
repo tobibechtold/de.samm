@@ -1,8 +1,7 @@
 package de.samm.model;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Calendar;
-import java.util.List;
 
 public abstract class AbstractMedium {
 	private String titel;
@@ -11,14 +10,14 @@ public abstract class AbstractMedium {
 	private String wertung;
 	private String plot;
 	private String release;
-	private File cover;
+	private BufferedImage cover;
 	private String genre;
 	
 	
 	
 	public AbstractMedium(String titel, String regisseur,
 			String schauspieler, String wertung, String plot,
-			String release, File cover, String genre) {
+			String release, BufferedImage cover, String genre) {
 		super();
 		this.titel = titel;
 		this.regisseur = regisseur;
@@ -27,6 +26,19 @@ public abstract class AbstractMedium {
 		this.plot = plot;
 		this.release = release;
 		this.cover = cover;
+		this.genre = genre;
+	}
+	
+	public AbstractMedium(String titel, String regisseur,
+			String schauspieler, String wertung, String plot,
+			String release, String genre) {
+		super();
+		this.titel = titel;
+		this.regisseur = regisseur;
+		this.schauspieler = schauspieler;
+		this.wertung = wertung;
+		this.plot = plot;
+		this.release = release;
 		this.genre = genre;
 	}
 	
@@ -66,10 +78,10 @@ public abstract class AbstractMedium {
 	public void setRelease(String release) {
 		this.release = release;
 	}
-	public File getCover() {
+	public BufferedImage getCover() {
 		return cover;
 	}
-	public void setCover(File cover) {
+	public void setCover(BufferedImage cover) {
 		this.cover = cover;
 	}
 	public String getGenre() {

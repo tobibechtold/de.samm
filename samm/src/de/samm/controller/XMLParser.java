@@ -1,13 +1,11 @@
 package de.samm.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
@@ -35,7 +33,7 @@ public class XMLParser
 	{
 		int serienid = getSerienID(serienname);
 		String wertung;
-		File cover;
+		BufferedImage cover;
 		String sender,genre,beschreibung,schausspieler,regisseur,titel,release;
 		Serie serie;
 		String link = "http://thetvdb.com/api/0717C50D3B6B66E5/series/"+serienid+"/all/en.xml";
@@ -51,7 +49,9 @@ public class XMLParser
 			genre = root.getChild("Series").getChildText("Genre");
 			sender = root.getChild("Series").getChildText("Network");
 			release = root.getChild("Series").getChildText("FirstAired");
-			//cover = getCover(root.getChild("Series").getChildText("poster"));
+			cover = getCover(root.getChild("Series").getChildText("poster"));
+			titel = root.getChild("Series").getChildText("SeriesName");
+			regisseur = "test";
 			//System.out.println(cover.getAbsoluteFile());
 			System.out.println(schausspieler);
 			System.out.println(beschreibung);
@@ -60,7 +60,8 @@ public class XMLParser
 			System.out.println(sender);
 			System.out.println(release);
 		
-			//serie = new Serie(titel,regisseur,schausspieler,wertung,beschreibung,release,cover,genre,sender);
+			serie = new Serie(titel,regisseur,schausspieler,wertung,beschreibung,release,cover,genre,sender);
+			return serie;
 		} catch (JDOMException | IOException e)
 		{
 			e.printStackTrace();
@@ -96,19 +97,20 @@ public class XMLParser
 		return serienid;
 	 }
 	 
-	 private File getCover(String pfad)
+	 public BufferedImage getCover(String pfad)
 	 {
 		 try
 		{
 			 
 			 URL url = new URL("http://www.thetvdb.com/banners/"+pfad); 
-			 String tDir = System.getProperty("java.io.tmpdir");
-			 String path ="C:/git/de.samm/samm"; 
-			 File  file = new File(path);
-			 file.deleteOnExit();
-			 FileUtils.copyURLToFile(url, file);
-		
-			return file;
+			 System.out.println(url);
+//			 String tDir = System.getProperty("java.io.tmpdir");
+//			 String path ="C:/git/de.samm/samm"; 
+//			 File  file = new File(path);
+//			 file.deleteOnExit();
+//			 FileUtils.copyURLToFile(url, file);
+			 BufferedImage img = ImageIO.read(url);
+			return img;
 		} catch (IOException e)
 		{
 			e.printStackTrace();

@@ -1,8 +1,6 @@
 package de.samm.model;
 
-import java.io.File;
-import java.util.Calendar;
-import java.util.List;
+import java.awt.image.BufferedImage;
 
 public class Film extends AbstractMedium {
 	/**
@@ -11,8 +9,8 @@ public class Film extends AbstractMedium {
 	private int dauer;
 	
 	
-	public Film(String titel, String regisseur, List<String> schauspieler,
-			double wertung, String plot, Calendar release, File cover,
+	public Film(String titel, String regisseur, String schauspieler,
+			String wertung, String plot, String release, BufferedImage cover,
 			String genre, int duration) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.setDuration(duration);
