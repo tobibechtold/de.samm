@@ -27,9 +27,17 @@ public class XMLParser
 	{
 		builder = new SAXBuilder();
 		sxbuild = new SAXBuilder();
+	
 	}
 
-		
+	/**
+	 * Parst die XML-Datei die TheTVDB.com zurueckliefert
+	 * @param serienname: Serien name der geparst werden soll
+	 * @return liefert die vollständige Serie mit allen Werten(Wertung, Name, Schauspieler,...) zurueck
+	 */
+	
+	//TODO Cover richtig parsen
+	
 	public Serie parseSerie(String serienname)
 	{
 		int serienid = getSerienID(serienname);
@@ -73,11 +81,16 @@ public class XMLParser
 		return null;
 	}
 //	
-//	public ArrayList<Serie> parseFilm(String serienname)
+//	public Film parseFilm(String filmname)
 //	{
 //		int serienid = getSerienID(serienname);
 //	}
 	 
+	/**
+	 * Liefert die SerienID zurueck
+	 * @param serienname 
+	 * @return
+	 */
 	 private int getSerienID(String serienname)
 	 {
 		 InputSource is = new InputSource("http://www.thetvdb.com/api/GetSeries.php?seriesname="+serienname);

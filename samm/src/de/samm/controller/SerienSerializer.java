@@ -10,16 +10,19 @@ import de.samm.model.Serie;
 
 public class SerienSerializer {
 	
-	File output = new File("c:\\samm\\");
+	//TODO Pfad bei jedem Benutzer, sprich bei mir ein anderen Pfad als bei Tobi
+	File output = new File("C:/Git/SAMM/repositories/de.samm/samm/SerialisierteObjekte");
 	
-	public SerienSerializer() {
+	public SerienSerializer() 
+	{
 		
 	}
 	
 	
 	public void serializeSerie(Serie s){
 		 
-		   try{
+		   try
+		   {
 			File f = new File(output, s.getTitel()+".dat");
 			output.mkdir();
 			FileOutputStream fout = new FileOutputStream(f);

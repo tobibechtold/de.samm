@@ -15,8 +15,10 @@ public class SammView {
 	private BufferedImage img;
 	
 	public SammView() {
-//		XMLParser parser = new XMLParser();
-//		Serie bb = parser.parseSerie("Breaking Bad");
+		XMLParser parser = new XMLParser();
+		
+		// TODO Was ist wenn Breaking Bad nicht existiert => File not Found exception ?!
+		// Serie bb = parser.parseSerie("Breaking Bad");
 		SerienSerializer ss = new SerienSerializer();
 		Serie bb = ss.deserializeSerie("Breaking Bad.dat");
 		if(bb != null) {
