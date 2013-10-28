@@ -1,16 +1,18 @@
 package de.samm.model;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Episode extends AbstractMedium{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5459886265720937501L;
 	/**
 	 * Nummer der Episode
 	 */
 	private int nummer;
 
 	public Episode(String titel, String regisseur, String schauspieler,
-			String wertung, String plot, String release, BufferedImage cover,
+			String wertung, String plot, String release, String cover,
 			String genre, int nummer) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.setNummer(nummer);

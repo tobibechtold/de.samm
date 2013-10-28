@@ -1,6 +1,5 @@
 package de.samm.model;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class Serie extends AbstractMedium implements Serializable {
 	private String sender;
 	
 	public Serie(String titel, String regisseur, String schauspieler,
-			String wertung, String plot, String release, BufferedImage cover,
+			String wertung, String plot, String release, String cover,
 			String genre, String sender) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.sender = sender;
@@ -48,7 +47,4 @@ public class Serie extends AbstractMedium implements Serializable {
 	public void setSender(String sender) {
 		this.sender = sender;
 	}
-	
-	
-	
 }

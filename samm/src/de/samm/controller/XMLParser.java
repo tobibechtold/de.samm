@@ -42,8 +42,7 @@ public class XMLParser
 	{
 		int serienid = getSerienID(serienname);
 		String wertung;
-		BufferedImage cover;
-		String sender,genre,beschreibung,schausspieler,regisseur,titel,release;
+		String sender,genre,beschreibung,schausspieler,regisseur,titel,release, cover;
 		Serie serie;
 		String link = "http://thetvdb.com/api/0717C50D3B6B66E5/series/"+serienid+"/all/en.xml";
 		InputSource is = new InputSource(link);	
@@ -58,7 +57,7 @@ public class XMLParser
 			genre = root.getChild("Series").getChildText("Genre");
 			sender = root.getChild("Series").getChildText("Network");
 			release = root.getChild("Series").getChildText("FirstAired");
-			cover = getCover(root.getChild("Series").getChildText("poster"));
+			cover = root.getChild("Series").getChildText("poster");
 			titel = root.getChild("Series").getChildText("SeriesName");
 			regisseur = "test";
 			//System.out.println(cover.getAbsoluteFile());
@@ -113,12 +112,12 @@ public class XMLParser
 		return serienid;
 	 }
 	 
-	 public BufferedImage getCover(String pfad)
+	 public BufferedImage getCoverByURL(Serie s)
 	 {
 		 try
 		{
 			 
-			 URL url = new URL("http://www.thetvdb.com/banners/"+pfad); 
+			 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
 			 System.out.println(url);
 //			 String tDir = System.getProperty("java.io.tmpdir");
 //			 String path ="C:/git/de.samm/samm"; 
