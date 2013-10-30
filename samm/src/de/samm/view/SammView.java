@@ -18,16 +18,16 @@ public class SammView {
 		XMLParser parser = new XMLParser();
 		
 		// TODO Was ist wenn Breaking Bad nicht existiert => File not Found exception ?!
-//		Serie bb = parser.parseSerie("Breaking Bad");
+		Serie bb = parser.parseSerie("Breaking Bad");
 		SerienSerializer ss = new SerienSerializer();
-		Serie bb = ss.deserializeSerie("Breaking Bad");
+//		Serie bb = ss.deserializeSerie("Breaking Bad");
 		if(bb != null) {
 			System.out.println("hiwe:"+bb.getTitel());
 			img = parser.getCoverByURL(bb);
 			JFrame frame = new JFrame();
-	        frame.setSize(300, 300);
 	        JLabel label = new JLabel(new ImageIcon(img));
 	        frame.add(label);
+	        frame.pack();
 	        frame.setVisible(true);
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
