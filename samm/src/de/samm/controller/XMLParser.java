@@ -1,14 +1,11 @@
 package de.samm.controller;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -25,7 +22,7 @@ public class XMLParser
 	
 	public XMLParser()
 	{
-		builder = new SAXBuilder();
+		setBuilder(new SAXBuilder());
 		sxbuild = new SAXBuilder();
 	
 	}
@@ -100,8 +97,6 @@ public class XMLParser
 			Element root = readDoc.getRootElement();
 			serienid = Integer.parseInt(root.getChildren("Series").get(0).getChildText("seriesid"));
 			System.out.println(serienid);
-			
-			
 		} catch (JDOMException e)
 		{
 			e.printStackTrace();
@@ -112,18 +107,18 @@ public class XMLParser
 		return serienid;
 	 }
 	 
+	 /**
+	  * Methode um das Cover-Bild einer Serie als BufferedImage zu erhalten. Wird kein 
+	  * Cover gefunden gibt die Methode null zurück.
+	  * @param s - Serie deren Cover heruntergeladen werden soll
+	  * @return Gibt das Cover Bild der übergebenen Serie als BufferedImage zurück
+	  */
 	 public BufferedImage getCoverByURL(Serie s)
 	 {
 		 try
 		{
-			 
 			 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
 			 System.out.println(url);
-//			 String tDir = System.getProperty("java.io.tmpdir");
-//			 String path ="C:/git/de.samm/samm"; 
-//			 File  file = new File(path);
-//			 file.deleteOnExit();
-//			 FileUtils.copyURLToFile(url, file);
 			 BufferedImage img = ImageIO.read(url);
 			return img;
 		} catch (IOException e)
@@ -132,4 +127,16 @@ public class XMLParser
 		}
 		 return null;
 	 }
+
+	public static String getApikey() {
+		return apiKey;
+	}
+
+	public SAXBuilder getBuilder() {
+		return builder;
+	}
+
+	public void setBuilder(SAXBuilder builder) {
+		this.builder = builder;
+	}
 }
