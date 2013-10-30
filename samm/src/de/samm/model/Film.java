@@ -1,8 +1,11 @@
 package de.samm.model;
 
-import java.awt.image.BufferedImage;
 
 public class Film extends AbstractMedium {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Dauer in Minuten
 	 */
@@ -10,7 +13,7 @@ public class Film extends AbstractMedium {
 	
 	
 	public Film(String titel, String regisseur, String schauspieler,
-			String wertung, String plot, String release, BufferedImage cover,
+			String wertung, String plot, String release, String cover,
 			String genre, int duration) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.setDuration(duration);

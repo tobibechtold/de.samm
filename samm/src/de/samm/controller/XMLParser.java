@@ -1,14 +1,11 @@
 package de.samm.controller;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -29,7 +26,7 @@ public class XMLParser
 	
 	public XMLParser()
 	{
-		builder = new SAXBuilder();
+		setBuilder(new SAXBuilder());
 		sxbuild = new SAXBuilder();
 		ss = new SerienSerializer();
 	}
@@ -46,8 +43,10 @@ public class XMLParser
 	{
 		int serienid = getSerienID(serienname);
 		String wertung;
-		BufferedImage cover;
-		String sender,genre,beschreibung,schausspieler,regisseur,titel,release,gastschausspieler;
+
+		
+		String cover,sender,genre,beschreibung,schausspieler,regisseur,titel,release,gastschausspieler;
+
 		Serie serie;
 		String link = "http://thetvdb.com/api/0717C50D3B6B66E5/series/"+serienid+"/all/en.xml";
 		InputSource is = new InputSource(link);	
@@ -63,7 +62,7 @@ public class XMLParser
 			genre = root.getChild("Series").getChildText("Genre");
 			sender = root.getChild("Series").getChildText("Network");
 			release = root.getChild("Series").getChildText("FirstAired");
-			cover = getCover(root.getChild("Series").getChildText("poster"));
+			cover = root.getChild("Series").getChildText("poster");
 			titel = root.getChild("Series").getChildText("SeriesName");
 			regisseur = "test";
 			//System.out.println(cover.getAbsoluteFile());
@@ -74,7 +73,8 @@ public class XMLParser
 			System.out.println(sender);
 			System.out.println(release);
 		
-			serie = new Serie(titel,regisseur,schausspieler,wertung,beschreibung,release,cover,genre,sender);
+			serie = new Serie(titel, regisseur, schausspieler,wertung, beschreibung, release, cover,
+					genre, sender);
 			
 			//ss.serializeSerie(serie);
 			
@@ -145,8 +145,6 @@ public class XMLParser
 			Element root = readDoc.getRootElement();
 			serienid = Integer.parseInt(root.getChildren("Series").get(0).getChildText("seriesid"));
 			System.out.println(serienid);
-			
-			
 		} catch (JDOMException e)
 		{
 			e.printStackTrace();
@@ -157,18 +155,18 @@ public class XMLParser
 		return serienid;
 	 }
 	 
-	 public BufferedImage getCover(String pfad)
+	 /**
+	  * Methode um das Cover-Bild einer Serie als BufferedImage zu erhalten. Wird kein 
+	  * Cover gefunden gibt die Methode null zurück.
+	  * @param s - Serie deren Cover heruntergeladen werden soll
+	  * @return Gibt das Cover Bild der übergebenen Serie als BufferedImage zurück
+	  */
+	 public BufferedImage getCoverByURL(Serie s)
 	 {
 		 try
 		{
-			 
-			 URL url = new URL("http://www.thetvdb.com/banners/"+pfad); 
+			 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
 			 System.out.println(url);
-//			 String tDir = System.getProperty("java.io.tmpdir");
-//			 String path ="C:/git/de.samm/samm"; 
-//			 File  file = new File(path);
-//			 file.deleteOnExit();
-//			 FileUtils.copyURLToFile(url, file);
 			 BufferedImage img = ImageIO.read(url);
 			return img;
 		} catch (IOException e)
@@ -177,4 +175,16 @@ public class XMLParser
 		}
 		 return null;
 	 }
+
+	public static String getApikey() {
+		return getApikey();
+	}
+
+	public SAXBuilder getBuilder() {
+		return builder;
+	}
+
+	public void setBuilder(SAXBuilder builder) {
+		this.builder = builder;
+	}
 }

@@ -1,14 +1,17 @@
 package de.samm.model;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Episode 
 {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5459886265720937501L;
+	/**
 	 * Nummer der Episode
 	 */
 	private int nummer;
+
 	private String titel;
 	private String regisseur;
 	private String wertung;

@@ -1,6 +1,5 @@
 package de.samm.model;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 public abstract class AbstractMedium implements Serializable{
@@ -14,14 +13,14 @@ public abstract class AbstractMedium implements Serializable{
 	private String wertung;
 	private String plot;
 	private String release;
-	private BufferedImage cover;
+	private String cover;
 	private String genre;
 	
 	
 	
 	public AbstractMedium(String titel, String regisseur,
 			String schauspieler, String wertung, String plot,
-			String release, BufferedImage cover, String genre) {
+			String release, String cover, String genre) {
 		super();
 		this.titel = titel;
 		this.regisseur = regisseur;
@@ -82,10 +81,10 @@ public abstract class AbstractMedium implements Serializable{
 	public void setRelease(String release) {
 		this.release = release;
 	}
-	public BufferedImage getCover() {
+	public String getCover() {
 		return cover;
 	}
-	public void setCover(BufferedImage cover) {
+	public void setCover(String cover) {
 		this.cover = cover;
 	}
 	public String getGenre() {

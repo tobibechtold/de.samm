@@ -11,24 +11,27 @@ import de.samm.model.Serie;
 public class SerienSerializer {
 	
 	//TODO Pfad bei jedem Benutzer, sprich bei mir ein anderen Pfad als bei Tobi
-	File output = new File("C:/Git/SAMM/repositories/de.samm/samm/SerialisierteObjekte");
-	
+	File output = new File("C:/SAMM");
+	File serienOrdner;
 	public SerienSerializer() 
 	{
 		
 	}
 	
-	
 	public void serializeSerie(Serie s){
 		 
 		   try
 		   {
-			File f = new File(output, s.getTitel()+".dat");
-			output.mkdir();
-			FileOutputStream fout = new FileOutputStream(f);
-			ObjectOutputStream oos = new ObjectOutputStream(fout);   
-			oos.writeObject(s);
-			oos.close();
+			   if(!output.exists())
+				   output.mkdir();
+			  serienOrdner = new File(output,s.getTitel());
+			   if(!serienOrdner.exists())
+				   serienOrdner.mkdir();
+			   File f = new File(serienOrdner, s.getTitel()+".dat");
+			   FileOutputStream fout = new FileOutputStream(f);
+			   ObjectOutputStream oos = new ObjectOutputStream(fout);   
+			   oos.writeObject(s);
+			   oos.close();
 	 
 		   }catch(Exception ex){
 			   ex.printStackTrace();
@@ -39,7 +42,8 @@ public class SerienSerializer {
 		Serie s;
 			
 		try {
-			File f = new File(output, titel);
+			serienOrdner = new File(output,titel);
+			File f = new File(serienOrdner, titel+".dat");
 			FileInputStream fin = new FileInputStream(f);
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			s = (Serie) ois.readObject();
