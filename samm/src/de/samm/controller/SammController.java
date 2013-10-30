@@ -11,8 +11,8 @@ public class SammController {
 		
 //		new SammLoginView();
 		new SammView();
-//		XMLParser parser = new XMLParser();
-//		parser.parseSerie("Breaking Bad");
+		XMLParser parser = new XMLParser();
+		parser.parseSerie("Breaking Bad");
 	}
 	
 }

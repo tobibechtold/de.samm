@@ -2,6 +2,7 @@ package de.samm.model;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Serie extends AbstractMedium implements Serializable {
@@ -10,7 +11,7 @@ public class Serie extends AbstractMedium implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -9007306221573471920L;
-	private List<Staffel> staffeln;
+	private ArrayList<Staffel> staffeln;
 	private String sender;
 	
 	public Serie(String titel, String regisseur, String schauspieler,
@@ -18,6 +19,7 @@ public class Serie extends AbstractMedium implements Serializable {
 			String genre, String sender) {
 		super(titel, regisseur, schauspieler, wertung, plot, release, cover, genre);
 		this.sender = sender;
+		staffeln = new ArrayList<Staffel>();
 	}
 	
 
@@ -37,7 +39,7 @@ public class Serie extends AbstractMedium implements Serializable {
 		return staffeln;
 	}
 
-	public void setStaffeln(List<Staffel> staffeln) {
+	public void setStaffeln(ArrayList<Staffel> staffeln) {
 		this.staffeln = staffeln;
 	}
 

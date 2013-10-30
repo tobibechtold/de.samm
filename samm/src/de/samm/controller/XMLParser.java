@@ -15,19 +15,23 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.xml.sax.InputSource;
 
+import de.samm.model.Episode;
 import de.samm.model.Serie;
+import de.samm.model.Staffel;
 
 
 public class XMLParser
 {
-	private static final String apiKey = "0717C50D3B6B66E5";
+	private static final String apiKeyserie = "0717C50D3B6B66E5";
+	private static final String apiKeyFilm = "0717C50D3B6B66E5";
 	private SAXBuilder builder,sxbuild;
+	private SerienSerializer ss;
 	
 	public XMLParser()
 	{
 		builder = new SAXBuilder();
 		sxbuild = new SAXBuilder();
-	
+		ss = new SerienSerializer();
 	}
 
 	/**
@@ -43,13 +47,14 @@ public class XMLParser
 		int serienid = getSerienID(serienname);
 		String wertung;
 		BufferedImage cover;
-		String sender,genre,beschreibung,schausspieler,regisseur,titel,release;
+		String sender,genre,beschreibung,schausspieler,regisseur,titel,release,gastschausspieler;
 		Serie serie;
 		String link = "http://thetvdb.com/api/0717C50D3B6B66E5/series/"+serienid+"/all/en.xml";
 		InputSource is = new InputSource(link);	
 			
 		try
 		{
+			//Attribute werden gesetzt
 			Document readDoc = sxbuild.build(is);
 			Element root = readDoc.getRootElement();
 			schausspieler = root.getChild("Series").getChildText("Actors");
@@ -70,8 +75,47 @@ public class XMLParser
 			System.out.println(release);
 		
 			serie = new Serie(titel,regisseur,schausspieler,wertung,beschreibung,release,cover,genre,sender);
-			SerienSerializer ss = new SerienSerializer();
-			ss.serializeSerie(serie);
+			
+			//ss.serializeSerie(serie);
+			
+			//Staffeln und Episoden werden hinzugefuegt
+			
+			//Staffeln hinzufuegen
+			int staffelnr = 1;
+			for(Element staffelelement:root.getChildren("Episode"))
+			{
+			
+				if(staffelelement.getChildText("Combined_season").equals(""+staffelnr))
+				{
+					serie.addStaffel(new Staffel(staffelnr));
+					
+					++staffelnr;
+				}
+			}
+			
+			//Episoden hnzufuegen
+			int episodennr = 1;
+			for(Staffel s:serie.getStaffelListe())
+			{
+				for(Element staffelelement:root.getChildren("Episode"))
+				{
+					
+					if(staffelelement.getChildText("Combined_season").equals(s.getNummer()+""))
+					{
+						gastschausspieler = root.getChild("Series").getChildText("Actors");
+						beschreibung = root.getChild("Series").getChildText("Overview");
+						wertung = root.getChild("Series").getChildText("Rating");
+						release = root.getChild("Series").getChildText("FirstAired");
+						titel = root.getChild("Series").getChildText("SeriesName");
+						Episode episode = new Episode(titel, regisseur, wertung, beschreibung, release,gastschausspieler, episodennr);
+						s.addEpisode(episode);
+						episodennr++;
+					}
+				}
+				episodennr = 1;
+				
+			}
+			
 			return serie;
 		} catch (JDOMException | IOException e)
 		{

@@ -6,6 +6,9 @@ public class Staffel {
 	private List<Episode> episoden;
 	private int nummer;
 	
+	public Staffel()
+	{}
+	
 	public Staffel(int nummer) {
 		this.nummer = nummer;
 	}
