@@ -19,7 +19,6 @@ public class SerienSerializer {
 	}
 	
 	public void serializeSerie(Serie s){
-		 
 		   try
 		   {
 			   if(!output.exists())
