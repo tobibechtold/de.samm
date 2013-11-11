@@ -20,7 +20,7 @@ import de.samm.model.Staffel;
 public class XMLParser
 {
 	private static final String apiKeyserie = "0717C50D3B6B66E5";
-	private static final String apiKeyFilm = "0717C50D3B6B66E5";
+	private static final String apiKeyFilm = "bbee8e1952003639528110f5ee629f24";
 	private SAXBuilder builder,sxbuild;
 	private SerienSerializer ss;
 	
@@ -124,11 +124,17 @@ public class XMLParser
 		
 		return null;
 	}
-//	
-//	public Film parseFilm(String filmname)
-//	{
-//		int serienid = getSerienID(serienname);
-//	}
+	
+	/**
+	 * parst ein Film
+	 * @param filmname
+	 * @return
+	 */
+	public Film parseFilm(String filmname)
+	{
+		//api.themoviedb.org/3/search/movie?api_key=bbee8e1952003639528110f5ee629f24&query=Gravity
+		
+	}
 	 
 	/**
 	 * Liefert die SerienID zurueck
@@ -176,9 +182,9 @@ public class XMLParser
 		 return null;
 	 }
 
-	public static String getApikey() {
-		return getApikey();
-	}
+//	public static String getApikey() {
+//		return getApikey();
+//	}
 
 	public SAXBuilder getBuilder() {
 		return builder;
