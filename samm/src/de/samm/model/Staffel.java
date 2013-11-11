@@ -1,19 +1,22 @@
 package de.samm.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Staffel {
-	private List<Episode> episoden;
+	private ArrayList<Episode> episoden;
 	private int nummer;
 	
 	public Staffel()
 	{}
 	
-	public Staffel(int nummer) {
+	public Staffel(int nummer) 
+	{
 		this.nummer = nummer;
+		episoden = new  ArrayList<Episode>();
 	}
 	
-	public Staffel(int nummer, List<Episode> episoden) {
+	public Staffel(int nummer, ArrayList<Episode> episoden) {
 		this.nummer = nummer;
 		this.episoden = episoden;
 	}
@@ -30,7 +33,7 @@ public class Staffel {
 		return episoden;
 	}
 
-	public void setEpisoden(List<Episode> episoden) {
+	public void setEpisoden(ArrayList<Episode> episoden) {
 		this.episoden = episoden;
 	}
 

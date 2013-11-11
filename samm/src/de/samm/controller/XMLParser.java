@@ -66,12 +66,7 @@ public class XMLParser
 			titel = root.getChild("Series").getChildText("SeriesName");
 			regisseur = "test";
 			//System.out.println(cover.getAbsoluteFile());
-			System.out.println(schausspieler);
-			System.out.println(beschreibung);
-			System.out.println(wertung);
-			System.out.println(genre);
-			System.out.println(sender);
-			System.out.println(release);
+	
 		
 			serie = new Serie(titel, regisseur, schausspieler,wertung, beschreibung, release, cover,
 					genre, sender);
@@ -102,11 +97,12 @@ public class XMLParser
 					
 					if(staffelelement.getChildText("Combined_season").equals(s.getNummer()+""))
 					{
-						gastschausspieler = root.getChild("Series").getChildText("Actors");
-						beschreibung = root.getChild("Series").getChildText("Overview");
-						wertung = root.getChild("Series").getChildText("Rating");
-						release = root.getChild("Series").getChildText("FirstAired");
-						titel = root.getChild("Series").getChildText("SeriesName");
+						gastschausspieler = staffelelement.getChildText("GuestStars");
+						beschreibung = staffelelement.getChildText("Overview");
+						wertung = staffelelement.getChildText("Rating");
+						release = staffelelement.getChildText("FirstAired");
+						titel = staffelelement.getChildText("EpisodeName");
+						
 						Episode episode = new Episode(titel, regisseur, wertung, beschreibung, release,gastschausspieler, episodennr);
 						s.addEpisode(episode);
 						episodennr++;
@@ -115,7 +111,11 @@ public class XMLParser
 				episodennr = 1;
 				
 			}
-			
+			System.out.println(serie.getStaffel(1).getEpisode(6).getTitel());
+			System.out.println(serie.getStaffel(1).getEpisode(6).getWertung());
+			System.out.println(serie.getStaffel(1).getEpisode(7).getPlot());
+			System.out.println(serie.getStaffel(1).getEpisode(6).getRelease());
+			System.out.println(serie.getStaffel(1).getEpisode(6).getGastschausspieler());
 			return serie;
 		} catch (JDOMException | IOException e)
 		{

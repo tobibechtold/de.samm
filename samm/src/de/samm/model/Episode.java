@@ -1,7 +1,6 @@
 package de.samm.model;
 
-
-public class Episode 
+public class Episode
 {
 	/**
 	 * 
@@ -11,24 +10,37 @@ public class Episode
 	 * Nummer der Episode
 	 */
 	private int nummer;
-
 	private String titel;
 	private String regisseur;
 	private String wertung;
 	private String plot;
 	private String gastschausspieler;
-	
+	private String release;
+
 	public Episode(String titel, String regisseur, String wertung, String plot,
-			String release,String gastschausspieler, int nummer)
+			String release, String gastschausspieler, int nummer)
 	{
-		this.titel = titel;
-		this.regisseur = regisseur;
-		this.wertung = wertung;
-		this.release = release;
-		this.gastschausspieler = gastschausspieler;
+		setTitel(titel);
+		setRegisseur(regisseur);
+		setWertung(wertung);
+		setRelease(release);
+		setGastschausspieler(gastschausspieler);
+		setPlot(plot);
 		this.setNummer(nummer);
 	}
-	
+
+	public String getGastschausspieler()
+	{
+		return gastschausspieler;
+	}
+
+	public void setGastschausspieler(String gastschausspieler)
+	{
+		if ( gastschausspieler == null )
+			gastschausspieler = "";
+		this.gastschausspieler = gastschausspieler;
+	}
+
 	public String getTitel()
 	{
 		return titel;
@@ -36,6 +48,8 @@ public class Episode
 
 	public void setTitel(String titel)
 	{
+		if ( titel == null )
+			titel = "";
 		this.titel = titel;
 	}
 
@@ -46,6 +60,8 @@ public class Episode
 
 	public void setRegisseur(String regisseur)
 	{
+		if ( regisseur == null )
+			regisseur = "";
 		this.regisseur = regisseur;
 	}
 
@@ -56,6 +72,8 @@ public class Episode
 
 	public void setWertung(String wertung)
 	{
+		if ( wertung == null )
+			wertung = "";
 		this.wertung = wertung;
 	}
 
@@ -66,6 +84,13 @@ public class Episode
 
 	public void setPlot(String plot)
 	{
+
+		if ( plot == null )
+		{
+			this.plot = "";
+			return;	
+		}
+
 		this.plot = plot;
 	}
 
@@ -76,12 +101,10 @@ public class Episode
 
 	public void setRelease(String release)
 	{
+		if ( release == null )
+			release = "";
 		this.release = release;
 	}
-
-	private String release;
-	
-
 
 	public int getNummer()
 	{
