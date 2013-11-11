@@ -1,9 +1,15 @@
 package de.samm.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Staffel {
+public class Staffel implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Episode> episoden;
 	private int nummer;
 	

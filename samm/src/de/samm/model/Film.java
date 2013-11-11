@@ -1,7 +1,9 @@
 package de.samm.model;
 
+import java.io.Serializable;
 
-public class Film extends AbstractMedium {
+
+public class Film extends AbstractMedium implements Serializable {
 	/**
 	 * 
 	 */

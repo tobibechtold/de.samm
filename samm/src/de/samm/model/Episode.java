@@ -1,6 +1,8 @@
 package de.samm.model;
 
-public class Episode
+import java.io.Serializable;
+
+public class Episode implements Serializable
 {
 	/**
 	 * 
