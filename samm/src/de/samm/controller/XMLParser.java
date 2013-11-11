@@ -13,6 +13,7 @@ import org.jdom2.input.SAXBuilder;
 import org.xml.sax.InputSource;
 
 import de.samm.model.Episode;
+import de.samm.model.Film;
 import de.samm.model.Serie;
 import de.samm.model.Staffel;
 
@@ -132,6 +133,7 @@ public class XMLParser
 	 */
 	public Film parseFilm(String filmname)
 	{
+		return null;
 		//api.themoviedb.org/3/search/movie?api_key=bbee8e1952003639528110f5ee629f24&query=Gravity
 		
 	}
