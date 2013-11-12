@@ -15,10 +15,9 @@ public class SammView {
 	public SammView() {
 		XMLParser parser = new XMLParser();
 		
-		// TODO Was ist wenn Breaking Bad nicht existiert => File not Found exception ?!
-		Serie bb = parser.parseSerie("Breaking Bad");
+//		Serie bb = parser.parseSerie("Breaking Bad");
 		SerienSerializer ss = new SerienSerializer();
-//		Serie bb = ss.deserializeSerie("Breaking Bad");
+		Serie bb = ss.deserializeSerie("Breaking Bad");
 		if(bb != null) {
 			System.out.println(bb.getTitel());
 			System.out.println(bb.getPlot());

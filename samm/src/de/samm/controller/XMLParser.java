@@ -1,6 +1,7 @@
 package de.samm.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -72,7 +73,7 @@ public class XMLParser
 			serie = new Serie(titel, regisseur, schausspieler,wertung, beschreibung, release, cover,
 					genre, sender);
 			
-			//ss.serializeSerie(serie);
+
 			
 			//Staffeln und Episoden werden hinzugefuegt
 			
@@ -112,6 +113,9 @@ public class XMLParser
 				episodennr = 1;
 				
 			}
+			
+			ss.serializeSerie(serie);
+			System.out.println("Serie serialisiert");
 			System.out.println(serie.getStaffel(1).getEpisode(6).getTitel());
 			System.out.println(serie.getStaffel(1).getEpisode(6).getWertung());
 			System.out.println(serie.getStaffel(1).getEpisode(7).getPlot());
@@ -173,10 +177,20 @@ public class XMLParser
 	 {
 		 try
 		{
-			 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
-			 System.out.println(url);
-			 BufferedImage img = ImageIO.read(url);
-			return img;
+			 File cover = new File("C:\\SAMM\\"+s.getTitel()+"\\"+s.getTitel()+".jpg");
+			 System.out.println(cover.getAbsolutePath());
+			 if(cover.exists()) {
+				 BufferedImage img = ImageIO.read(cover);
+				 s.setCover(cover.getAbsolutePath());
+				 System.out.println("lokal");
+				 return img;
+			 }
+			 else {
+				 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
+				 System.out.println(url);
+				 BufferedImage img = ImageIO.read(url);
+				 return img;
+			 }
 		} catch (IOException e)
 		{
 			e.printStackTrace();
