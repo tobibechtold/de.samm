@@ -209,4 +209,12 @@ public class XMLParser
 	public void setBuilder(SAXBuilder builder) {
 		this.builder = builder;
 	}
+
+	public static String getApikeyserie() {
+		return apiKeyserie;
+	}
+
+	public static String getApikeyfilm() {
+		return apiKeyFilm;
+	}
 }

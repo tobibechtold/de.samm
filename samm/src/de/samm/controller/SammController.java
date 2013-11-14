@@ -1,6 +1,5 @@
 package de.samm.controller;
 
-import de.samm.model.Serie;
 import de.samm.view.SammView;
 
 
