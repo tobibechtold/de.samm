@@ -16,16 +16,19 @@ public class SammView {
 	public SammView() {
 		XMLParser serienparser = new XMLParser();
 		JsonParser filmparser = new JsonParser();
-		filmparser.parseFilm("300");
+		System.out.println("Parse Film Fight Club:");
+		filmparser.parseFilm("Fight Club");
 		
+		System.out.println("------------------");
+		System.out.println("Parse Serie Breaking Bad");
 		Serie bb = serienparser.parseSerie("Breaking Bad");
 		SerienSerializer ss = new SerienSerializer();
 		bb = ss.deserializeSerie("Breaking Bad");
 		
 		if(bb != null) {
-			System.out.println(bb.getTitel());
-			System.out.println(bb.getPlot());
-			System.out.println("Director: "+bb.getRegisseur());
+//			System.out.println(bb.getTitel());
+//			System.out.println(bb.getPlot());
+//			System.out.println("Director: "+bb.getRegisseur());
 			img = serienparser.getCoverByURL(bb);
 			JFrame frame = new JFrame();
 	        JLabel label = new JLabel(new ImageIcon(img));

@@ -116,11 +116,11 @@ public class XMLParser
 			
 			ss.serializeSerie(serie);
 			System.out.println("Serie serialisiert");
-			System.out.println(serie.getStaffel(1).getEpisode(6).getTitel());
-			System.out.println(serie.getStaffel(1).getEpisode(6).getWertung());
-			System.out.println(serie.getStaffel(1).getEpisode(7).getPlot());
-			System.out.println(serie.getStaffel(1).getEpisode(6).getRelease());
-			System.out.println(serie.getStaffel(1).getEpisode(6).getGastschausspieler());
+			System.out.println("Titel :"+serie.getTitel());
+			System.out.println("Cover-Path:"+serie.getCover());
+			System.out.println("Genre:"+serie.getGenre());
+			System.out.println("Rating :"+serie.getWertung());
+			System.out.println("Sender :"+serie.getSender());
 			return serie;
 		} catch (JDOMException | IOException e)
 		{
@@ -182,12 +182,12 @@ public class XMLParser
 			 if(cover.exists()) {
 				 BufferedImage img = ImageIO.read(cover);
 				 s.setCover(cover.getAbsolutePath());
-				 System.out.println("lokal");
+				 //System.out.println("lokal");
 				 return img;
 			 }
 			 else {
 				 URL url = new URL("http://www.thetvdb.com/banners/"+s.getCover()); 
-				 System.out.println(url);
+				 //System.out.println(url);
 				 BufferedImage img = ImageIO.read(url);
 				 return img;
 			 }
@@ -197,10 +197,6 @@ public class XMLParser
 		}
 		 return null;
 	 }
-
-//	public static String getApikey() {
-//		return getApikey();
-//	}
 
 	public SAXBuilder getBuilder() {
 		return builder;
