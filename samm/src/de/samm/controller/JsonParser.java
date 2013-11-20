@@ -14,11 +14,10 @@ public class JsonParser
 	
 	
 	/**
-	 * parst ein Film
+	 * Parst einen Film
 	 * @param filmname
 	 * @return
 	 */
-	
 	public Film parseFilm(String filmname)
 	{
 		ObjectMapper mapper = new ObjectMapper();
@@ -37,6 +36,7 @@ public class JsonParser
 			System.out.println("Dauer : "+film.getRuntime());
 			System.out.println("Genre :"+film.getGenres().get(0).getName());
 			System.out.println("Untertitel: "+film.getTagline());
+			return film;
 			
 		} catch (IOException e)
 		{
