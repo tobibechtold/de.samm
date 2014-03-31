@@ -5,7 +5,6 @@ import java.net.URL;
 import de.samm.model.Film;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-@JsonIgnoreProperties(ignoreUnknown = true)
 
 
 public class JsonParser
